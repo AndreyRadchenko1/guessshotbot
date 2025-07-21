@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "image": "movie1.jpg",
+    "question": "Which movie is this shot from?",
+    "options": ["The Matrix", "Interstellar", "Inception", "Avatar"],
+    "answer": "The Matrix",
+    "fact": "This movie was released in 1999."
+  }
+]
