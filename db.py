@@ -22,6 +22,9 @@ class User(Base):
     streak = Column(Integer, default=0)
     games_played = Column(Integer, default=0)
     medals = Column(String, default='')  # Список медалей через запятую
+    referrer_id = Column(Integer, nullable=True)  # ID пригласившего
+    referrals_count = Column(Integer, default=0)  # Количество приглашённых
+    timezone = Column(String, default='Europe/Moscow')  # Часовой пояс
 
 
 class Answer(Base):

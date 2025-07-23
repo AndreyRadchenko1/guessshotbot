@@ -40,6 +40,18 @@ def filter_unsent_questions(questions, sent_ids):
     return [q for q in questions if q['id'] not in sent_ids]
 
 
+# Списки реакций (эмодзи и GIF-ссылки)
+CORRECT_REACTIONS = [
+    "🎉", "🧠", "😎", "https://media.giphy.com/media/111ebonMs90YLu/giphy.gif", "https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
+]
+WRONG_REACTIONS = [
+    "😢", "😵", "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif", "https://media.giphy.com/media/l2JehQ2GitHGdVG9y/giphy.gif"
+]
+
+# Путь к универсальному баннеру победителя
+WIN_BANNER_PATH = 'data/images/win_banner.jpg'
+
+
 @router.callback_query(F.data == "menu_play")
 async def start_quiz(callback: CallbackQuery):
     user_id = callback.from_user.id
@@ -141,11 +153,22 @@ async def answer_quiz(callback: CallbackQuery):
         await session.commit()
     if is_correct:
         msg = "✅ Верно!\n"
+        reaction = random.choice(CORRECT_REACTIONS)
     else:
         msg = (
             f"❌ Неверно. Правильный ответ: <b>{q['answer']}</b>\n"
         )
+        reaction = random.choice(WRONG_REACTIONS)
     if q.get('fact'):
         msg += f"\nℹ️ {q['fact']}"
-    await callback.message.answer(msg)
+    # Добавляем реакцию (эмодзи или GIF)
+    if reaction.startswith("http"):
+        await callback.message.answer(msg)
+        await callback.message.answer_animation(reaction)
+    else:
+        msg += f"\n{reaction}"
+        await callback.message.answer(msg)
+    # Отправляем баннер победителя, если ответ верный
+    if is_correct and os.path.exists(WIN_BANNER_PATH):
+        await callback.message.answer_photo(InputFile(WIN_BANNER_PATH), caption="🏆 Поздравляем с победой!")
     await callback.answer()

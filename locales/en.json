@@ -17,9 +17,18 @@
   "winner_medal": "🥇 Winner of the Day",
   "ach_brain": "🧠 Movie Buff (streak 5+)",
   "ach_explorer": "🌍 Explorer (10+ games)",
+  "ach_master": "🏅 Intuition Master (10+ streak)",
+  "ach_turtle": "🐢 Patient (3 days without wins)",
+  "ach_newbie": "🔥 Newbie (first win)",
+  "ach_loyal": "📆 Loyal Player (7 days in a row)",
+  "ach_marathon": "💪 Iron Will (7 days in a row)",
   "correct": "✅ Correct!",
   "wrong": "❌ Wrong. Correct answer:",
   "fact": "ℹ️ Fact:",
   "already_answered": "You have already answered this question today!",
-  "no_questions": "No more questions! Try again later."
+  "no_questions": "No more questions! Try again later.",
+  "profile_btn": "👤 Profile",
+  "feedback_btn": "💬 Feedback & Suggestions",
+  "reminder_msg": "🎯 In 10 minutes — a new quiz! Don't miss it!",
+  "achievements_btn": "🏅 Achievements Leaders"
 }

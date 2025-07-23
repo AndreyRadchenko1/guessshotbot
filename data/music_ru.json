@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "question": "Кто исполнил песню 'Yesterday'?",
+    "options": ["The Beatles", "Queen", "ABBA", "Scorpions"],
+    "answer": "The Beatles",
+    "image": "music1.jpg",
+    "fact": "'Yesterday' — одна из самых известных песен The Beatles."
+  },
+  {
+    "id": 2,
+    "question": "Какой инструмент считается символом классической музыки?",
+    "options": ["Скрипка", "Гитара", "Барабаны", "Саксофон"],
+    "answer": "Скрипка",
+    "image": "music2.jpg",
+    "fact": "Скрипка — один из главных инструментов в симфоническом оркестре."
+  }
+] 

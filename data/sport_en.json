@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "question": "How many players are on a football (soccer) team on the field?",
+    "options": ["11", "7", "9", "5"],
+    "answer": "11",
+    "image": "sport1.jpg",
+    "fact": "In classic football, each team has 11 players on the field."
+  },
+  {
+    "id": 2,
+    "question": "Which sport is associated with Wimbledon?",
+    "options": ["Tennis", "Basketball", "Football", "Swimming"],
+    "answer": "Tennis",
+    "image": "sport2.jpg",
+    "fact": "Wimbledon is the oldest and most prestigious tennis tournament."
+  }
+] 

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "question": "Who performed the song 'Yesterday'?",
+    "options": ["The Beatles", "Queen", "ABBA", "Scorpions"],
+    "answer": "The Beatles",
+    "image": "music1.jpg",
+    "fact": "'Yesterday' is one of the most famous songs by The Beatles."
+  },
+  {
+    "id": 2,
+    "question": "Which instrument is a symbol of classical music?",
+    "options": ["Violin", "Guitar", "Drums", "Saxophone"],
+    "answer": "Violin",
+    "image": "music2.jpg",
+    "fact": "The violin is one of the main instruments in a symphony orchestra."
+  }
+] 

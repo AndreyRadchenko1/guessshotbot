@@ -112,11 +112,29 @@ async def send_city_question(bot: Bot):
     logging.info('Рассылка вопроса по городу (18:00 МСК)')
     await send_topic_question(bot, 'cities')
 
+async def send_quiz_reminder(bot: Bot):
+    async with SessionLocal() as session:
+        users_result = await session.execute(select(User))
+        users = users_result.scalars().all()
+        for user in users:
+            lang = user.lang or 'ru'
+            locale = LOCALES.get(lang, LOCALES['ru'])
+            try:
+                await bot.send_message(
+                    user.tg_id,
+                    locale.get('reminder_msg', '🎯 Через 10 минут — новая викторина! Не пропусти!')
+                )
+            except Exception as e:
+                logging.warning(f"Не удалось отправить напоминание пользователю {user.tg_id}: {e}")
+
 
 def setup_scheduler(bot: Bot):
     scheduler = AsyncIOScheduler(timezone=pytz.timezone('Europe/Moscow'))
     scheduler.add_job(send_movie_question, CronTrigger(hour=12, minute=0), args=[bot])
     scheduler.add_job(send_city_question, CronTrigger(hour=18, minute=0), args=[bot])
+    # Новое: напоминания за 10 минут до вопросов
+    scheduler.add_job(send_quiz_reminder, CronTrigger(hour=11, minute=50), args=[bot])
+    scheduler.add_job(send_quiz_reminder, CronTrigger(hour=17, minute=50), args=[bot])
     scheduler.start()
 
 
